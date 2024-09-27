@@ -52,23 +52,29 @@ public class Main {
             }
         };
 
-        timer.scheduleAtFixedRate(gameTask, 0, 1000);
+        timer.scheduleAtFixedRate(gameTask, 0, 2000);
     }
 
 
     private static void askToPlayAgain(Timer timer, Scanner scanner) {
+        while (true) {
 
             System.out.println("Do you want to play again? (y/n)");
             String answer = scanner.nextLine();
             if (answer.equalsIgnoreCase("y")) {
                 System.out.println("Starting a new game...");
                 startGame(scanner);
-                return;
+                break;
             } else if (answer.equalsIgnoreCase("n")) {
                 System.out.println("Thanks for playing!");
                 timer.cancel();
+                break;
 
+
+            }else {
+                System.out.println("Invalid input use only y or n");
             }
+        }
 
     }
 }
